@@ -1,3 +1,8 @@
+
+import { useState } from 'react';
+import Cabecera from './components/Cabecera'
+import Listado from './components/Listado'
+
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -7,10 +12,17 @@
 
 function App() {
 
+const [purchased,setPurchased]=useState(0);
+
+const increaseCart =()=>{
+  setPurchased(purchased+1);
+  console.log("increase ejecutado");
+}
+
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera quantity={purchased}/>
+      <Listado increase={increaseCart}/>
     </div>
   );
 }
